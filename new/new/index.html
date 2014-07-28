@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+  <head>
+    <script type="text/javascript" src="lib/angular.min.js"></script>
+	<script type="text/javascript" src="lib/angular-route.min.js"></script>
+   <!-- <script type="text/javascript" src="js/controllers.js"></script> -->
+	<script type="text/javascript" src="js/app.js"></script>
+	<link rel="stylesheet" href="css/demo.css"> 
+    </head>
+
+  <body >
+	<center>
+
+    <header>
+      <h1 class="text-center">SMS PORTAL</h1>
+      <h2 class="text-center">An Angular Approach</h2>
+    </header>
+	
+
+	<div> 	<h4>
+			<a href="#/home" > Home </a> |
+			<a href="#/partners" > Partner </a> |
+			<a href="#/issuers" > Issuer </a> |
+			<a href="#/accounts" > Account </a> |
+			<a href="#/reports" > Reports </a> 
+			</h4> 
+	</div>
+	 <!--<div ng-controller="PartnerListController">
+		<table border="1">
+			<tr>
+			  <td>Partner Name</td>
+			  <td>Account Type</td> 
+			  <td>Account Status</td>
+			</tr>
+			<tr ng-repeat="partner in partners">
+			  <td>{{partner.name}}</td>
+			  <td>{{partner.accountType}}</td> 
+			  <td>{{partner.status}}</td>
+			</tr>
+		</table>
+    </div> -->
+	<div ng-view></div>
+	
+
+<!--<ul>
+  <li ng-repeat="item in navList">
+    <a ng-class="{active:item.active}" href="#{{item.url}}">{{item.title}}</a>
+  </li>
+</ul>-->
+
+	
+	</center>
+ </body>
+</html>
