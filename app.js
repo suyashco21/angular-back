@@ -87,6 +87,18 @@ app.post('/api/login', function(request, response) {
     }
 });
 
+app.all('*', function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "X-Requested-With");
+  next();
+ });
+
+app.all('/*', function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+   res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+ res.header("Access-Control-Allow-Headers", "X-Requested-With, Content-Type");
+  next();
+});
 app.post('/api/logout', requiresAuthentication, function(request, response) {
     var token= request.headers.access_token;
     removeFromTokens(token);
