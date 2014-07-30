@@ -87,7 +87,7 @@ app.post('/api/login', function(request, response) {
     }
 });
 
-app.all('*', function(req, res, next) {
+/*app.all('*', function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "X-Requested-With");
   next();
@@ -98,11 +98,39 @@ app.all('/*', function (req, res, next) {
    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
  res.header("Access-Control-Allow-Headers", "X-Requested-With, Content-Type");
   next();
-});
-app.post('/api/logout', requiresAuthentication, function(request, response) {
-    var token= request.headers.access_token;
-    removeFromTokens(token);
+});*/
+app.post('/api/logout',function(request,response){
+var token=request.body.access_token;
+removeFromTokens(token);
     response.send(200);
+});
+//app.post('/api/logout', requiresAuthentication, function(request, response) {
+  //  var token= request.body.access_token;
+   // removeFromTokens(token);
+   // response.send(200);
+//});
+/*var o = require('public/ctr.json');
+var fs = require('fs');
+var file = __dirname + '/ctr.json';
+
+fs.readFile(file, 'utf8', function (err, data) {
+  if (err) {
+    console.log('Error: ' + err);
+    return;
+  }
+
+  data = JSON.parse(data);
+
+  console.dir(data);
+});*/
+var fs = require("fs");
+var file = (JSON.parse(fs.readFileSync("./public/ctr.json", "utf8")));
+app.post('/api/search',function(request,response){
+var id=request.body.id;
+//removeFromTokens(token);
+//data.push(ctr.json);
+    response.send(file);
+	
 });
 
 http.createServer(app).listen(app.get('port'), function(){
